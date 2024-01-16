@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Category;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 
@@ -25,7 +26,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('item.create');
+        //return view('item.create');
+        $categories = Category::all();     
+        return view('item.create', compact('categories'));
     }
 
     /**
@@ -36,7 +39,8 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        $item = new Item;     
+        $item->category_id = $request->input('category_id');     // Set other attributes    $item->save();
     }
 
     /**
