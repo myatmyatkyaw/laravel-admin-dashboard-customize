@@ -16,7 +16,7 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::get('/', function () {
-    return view('dashboard.index');
+    return view('auth.login');
 });
 
 Auth::routes();

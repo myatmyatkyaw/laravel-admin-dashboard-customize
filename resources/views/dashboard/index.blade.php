@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
     <!-- Right navbar links -->
@@ -41,7 +41,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src={{  asset("dist/img/AdminLTELogo.png")}} alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">GIC-Shopping</span>
     </a>
 
     <!-- Sidebar -->
@@ -52,7 +52,7 @@
           <img src={{  asset("dist/img/user2-160x160.jpg")}} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -79,29 +79,45 @@
               <i class="nav-icon fas fa-plus-circle"></i>
               <p>
                Create Category
-               
+
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item">
             <a href="{{ route('category.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Category List
-               
+
               </p>
             </a>
-          </li>  
-            
-            
-            </ul>
           </li>
 
-          
-  
-            </ul>
+
+
+
+          <li class="nav-item">
+            <a href="{{ route('item.create') }}" class="nav-link">
+              <i class="nav-icon fas fa-plus-circle"></i>
+              <p>
+               Create Item
+
+              </p>
+            </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ route('item.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              Item List
+
+              </p>
+            </a>
+          </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

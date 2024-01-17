@@ -14,9 +14,16 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $items = Item::all();
+        //return $categories;
+        return view('item.index',compact('items'));
     }
 
     /**
@@ -26,8 +33,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //return view('item.create');
-        $categories = Category::all();     
+        // return view('item.create');
+        $categories = Category::all();
         return view('item.create', compact('categories'));
     }
 
@@ -39,8 +46,13 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        $item = new Item;     
-        $item->category_id = $request->input('category_id');     // Set other attributes    $item->save();
+        $item = new Item;
+        $item->name= $request->name;
+        $item->price= $request->price;
+        $item->category_id = $request->category_id;
+        $item->expired_date= $request->expired_date;
+        $item->save();
+        return redirect()->route('item.index')->with('success','New Item is Created Successfully');
     }
 
     /**
@@ -51,7 +63,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('item.detail',compact('item'));
     }
 
     /**
@@ -62,7 +74,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        $categories = Category::all();
+        return view('item.edit', compact('item' , 'categories'));
     }
 
     /**
@@ -74,7 +87,14 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        
+        $item->name= $request->name;
+        $item->price= $request->price;
+        $item->category_id = $request->category_id;
+        $item->expired_date= $request->expired_date;
+        $item->update();
+        // return $request;
+        return redirect()->route('item.index')->with('update','Item is Updated Successfully');
     }
 
     /**
@@ -85,6 +105,9 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        if($item){
+            $item->delete();
+        }
+        return redirect()->back()->with('delete','Item is Deleted Successfully');
     }
 }

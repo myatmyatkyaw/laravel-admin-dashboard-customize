@@ -7,13 +7,13 @@
         @method('PUT')
     <div class="row justify-content-center">
         <div class="col-md-8">
-   
+
             <div class="card">
                 <div class="align-items-center m-4">
-                    
-    
+
+
                     <div class="col-auto">
-                        <label for="inputname" class="col-form-label">Name<small class="text-danger">*</small></label>
+                        <label for="inputname" class="col-form-label">Edit Category Name<small class="text-danger">*</small></label>
                     </div>
                     <div class="col-auto">
                         <input type="text" id="inputname" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $category->name }}">
@@ -21,10 +21,10 @@
                         <div class="text-danger">*{{$message}}</div>
                         @enderror
                     </div>
-                    
-                  
-    
-                  
+
+
+
+
                     <div class="col-sm mt-3">
                     <a href="{{ route('category.index') }}" class="btn btn-outline-dark">Back</a>
                     <button type="submit" class="btn btn-outline-primary">Update</button>
