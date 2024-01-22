@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{route('item.update' , $item->id)}}" method="post">
+    <form action="{{route('item.update' , $item->id)}}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
     <div class="row justify-content-center">
@@ -55,6 +55,19 @@
                         @enderror
 
                 </div>
+
+
+                <div class="col-auto">
+                    <label class="col-form-label">Upload Image<small class="text-danger">*</small></label><br>
+                    <img src="/storage/gallery/{{$item->image }}" alt="Image Name" width="40px" height="40px"/>
+                    <input type="file"  class="form-control" name="image">
+
+                    @error('image')
+                    <div class="text-danger">*{{$message}}</div>
+                    @enderror
+
+                </div>
+
 
 
                 <div class="col-sm mt-3">

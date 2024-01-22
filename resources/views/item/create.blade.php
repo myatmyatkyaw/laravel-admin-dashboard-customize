@@ -9,7 +9,7 @@
 
                 <div class="card-body align-items-center m-4">
                     <div class="mb-3 text-secondary"><h3>Create Item</h3></div>
-                    <form action="{{route('item.store')}}" method="post">
+                    <form action="{{route('item.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
 
@@ -74,6 +74,17 @@
                             @enderror
 
                         </div>
+
+                        <div class="col-auto">
+                            <label class="col-form-label">Upload Image<small class="text-danger">*</small></label>
+                            <input type="file"  class="form-control" name="image">
+
+                            @error('image')
+                            <div class="text-danger">*{{$message}}</div>
+                            @enderror
+
+                        </div>
+
 
                         <div class="col-sm mt-3">
                         <a href="{{ route('item.index') }}" class="btn btn-outline-dark">Back</a>

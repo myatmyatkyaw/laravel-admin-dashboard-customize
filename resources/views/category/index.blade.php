@@ -31,7 +31,7 @@
 
 
 
-<table class="table table-striped table-striped-columns">
+<table class="table table-hover">
   <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
