@@ -13,6 +13,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $categories = category::all();
@@ -74,7 +80,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        
+
        $category->name = $request->name;
        $category->update();
        return redirect()->route('category.index')->with('update','Category is updated successfully');
